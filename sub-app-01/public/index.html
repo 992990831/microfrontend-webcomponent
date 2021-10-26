@@ -1,0 +1,36 @@
+<html>
+    <script src='bundle.js'></script>
+    <body>
+        
+        <script>
+            // const helloCom = document.querySelector('hello-component');
+            // helloCom.title = 'Custom Title';
+            // helloCom.addEventListener('show', e => console.log(e));
+
+            function onHelloComClick(e) {
+                alert(e.detail.message);
+            }
+
+            function fireCustomEvent() {
+                console.log('event fired');
+                const event = new Event('show', {bubbles: true});
+                this.dispatchEvent(event);
+            }
+
+            document.addEventListener('fooEvent', e =>{
+                console.log('fooEvent fired');
+            });
+            
+        </script>
+
+        <hello-component my-name="Andy" click='onHelloComClick'></hello-component>
+      
+        <input type="button" id='inputEvent' onclick='fireCustomEvent.bind(this)()' value="Click to dispatch" />
+
+        <script>
+            document.getElementById('inputEvent').addEventListener('show', e =>
+                console.log('from account')
+            );
+        </script>
+    </body>
+</html>
