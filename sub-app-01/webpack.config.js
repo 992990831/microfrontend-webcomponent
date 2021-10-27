@@ -25,5 +25,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
+  },
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   }
 };
