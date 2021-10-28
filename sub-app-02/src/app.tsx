@@ -12,12 +12,13 @@ function App() {
 class HelloElement extends HTMLElement {
     connectedCallback() {
       const myName = this.getAttribute('my-name');
-     
+
+      const shadowEle = this.attachShadow({ mode: 'open' });
       ReactDOM.render(
-        <div>
+        <div id='sub-app-02'>
             <App></App>
         </div>,
-        this
+        shadowEle
       );
     }
   }
