@@ -1,24 +1,41 @@
 import * as React from 'react';
 import { useScript } from "./useScript";
 
-function SubApp01() {
-  const externalScript = "http://localhost:5001/bundle";
-  const loadingState = useScript(externalScript);
-  return(
-    <div>
-      {loadingState === "loading" && <p>Loading...</p>}
-      {loadingState === "ready" && <hello-component my-name="Andy" />}
-    </div>
-  );
+const config = {
+  app01: {tag: 'hello-component', url: 'http://localhost:5001/bundle' },
+  app02: {tag: 'sub-app-02', url: 'http://localhost:5002/bundle' }
 }
 
-function SubApp02() {
-  const externalScript = "http://localhost:5002/bundle";
+// function SubApp01() {
+//   const externalScript = "http://localhost:5001/bundle";
+//   const loadingState = useScript(externalScript);
+//   return(
+//     <div>
+//       {loadingState === "loading" && <p>Loading...</p>}
+//       {loadingState === "ready" && <hello-component my-name="Andy" />}
+//     </div>
+//   );
+// }
+
+// function SubApp02() {
+//   const externalScript = "http://localhost:5002/bundle";
+//   const loadingState = useScript(externalScript);
+//   return(
+//     <div>
+//       {loadingState === "loading" && <p>Loading...</p>}
+//       {loadingState === "ready" && <sub-app-02 />}
+//     </div>
+//   );
+// }
+
+function SubApp(props) {
+  const externalScript = config[props.appId].url;
+  const Tag = config[props.appId].tag;
   const loadingState = useScript(externalScript);
-  return(
+    return(
     <div>
       {loadingState === "loading" && <p>Loading...</p>}
-      {loadingState === "ready" && <sub-app-02 />}
+      {loadingState === "ready" && <Tag />}
     </div>
   );
 }
@@ -37,7 +54,7 @@ function App() {
       <input type='button' value='Sub-App 02' onClick={()=> setApp(app02)} />
       <hr />
       {
-        app === app01? <SubApp01></SubApp01> : <SubApp02></SubApp02>
+        <SubApp appId={app}></SubApp>
       }
     </div>
   );
