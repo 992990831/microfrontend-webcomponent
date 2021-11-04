@@ -5,7 +5,8 @@ import { useScript } from "./useScript";
 
 const config = {
   app01: {tag: 'hello-component', url: 'http://localhost:5001/bundle' },
-  app02: {tag: 'sub-app-02', url: 'http://localhost:5002/bundle' }
+  app02: {tag: 'sub-app-02', url: 'http://localhost:5002/bundle' },
+  app03: {tag: 'x-component', url: 'http://localhost:5003/bundle' }
 }
 
 // function SubApp01() {
@@ -44,6 +45,7 @@ function SubApp(props) {
 
 const app01 = 'app01';
 const app02 = 'app02';
+const app03 = 'app03';
 
 // function SubApp() {
 //   return (
@@ -82,6 +84,7 @@ function App() {
       
       <input type='button' value='Sub-App 01' onClick={()=> setApp(app01)} />
       <input type='button' value='Sub-App 02' onClick={()=> setApp(app02)} />
+      <input type='button' value='Sub-App 03' onClick={()=> setApp(app03)} />
       <hr />
       {
         <SubApp appId={app}></SubApp>

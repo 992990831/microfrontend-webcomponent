@@ -1,0 +1,1 @@
+(()=>{class e extends HTMLElement{constructor(){super()}connectedCallback(){this.attachShadow({mode:"open"}).innerHTML="\n      <p>Hello from Web Component!</p>\n    "}}const n="x-component";window.customElements.get(n)||window.customElements.define(n,e)})();
